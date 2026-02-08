@@ -10,7 +10,7 @@ import {
 import React, { useEffect } from "react";
 
 interface CircularTextProps {
-  text: string;
+  text?: string;
   spinDuration?: number;
   onHover?: "slowDown" | "speedUp" | "pause" | "goBonkers";
   className?: string;
@@ -39,7 +39,7 @@ const getTransition = (duration: number, from: number) => ({
 });
 
 const CircularText: React.FC<CircularTextProps> = ({
-  text,
+  text = "VAIBHAV*LABS*COMPONENTS*",
   spinDuration = 20,
   onHover = "speedUp",
   className = "",
