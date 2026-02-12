@@ -1,195 +1,137 @@
-'use client';
+import { contactConfig } from "@/config/contact";
+import Link from "next/link";
 
-import { Button } from '@/components/ui/button';
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from '@/components/ui/card';
-import {
-  Form,
-  FormControl,
-  FormField,
-  FormItem,
-  FormLabel,
-  FormMessage,
-} from '@/components/ui/form';
-import { Input } from '@/components/ui/input';
-import { Textarea } from '@/components/ui/textarea';
-import { zodResolver } from '@hookform/resolvers/zod';
-import { Loader2 } from 'lucide-react';
-import { useState } from 'react';
-import { useForm } from 'react-hook-form';
-import { toast } from 'sonner';
-import * as z from 'zod';
-import Chat from '../svg/Chat';
-
-
-const contactFormSchema = z.object({
-  name: z.string().min(2, {
-    message: 'Name must be at least 2 characters.',
-  }),
-  email: z.string().email({
-    message: 'Please enter a valid email address.',
-  }),
-  phone: z
-    .string()
-    .min(10, {
-      message: 'Phone number must be at least 10 characters.',
-    })
-    .regex(/^[\+]?[1-9][\d]{0,15}$/, {
-      message: 'Please enter a valid phone number.',
-    }),
-  message: z
-    .string()
-    .min(10, {
-      message: 'Message must be at least 10 characters.',
-    })
-    .max(1000, {
-      message: 'Message must not exceed 1000 characters.',
-    }),
-});
-
-type ContactFormValues = z.infer<typeof contactFormSchema>;
-
-export default function ContactForm() {
-  const [isSubmitting, setIsSubmitting] = useState(false);
-
-  const form = useForm<ContactFormValues>({
-    resolver: zodResolver(contactFormSchema),
-    defaultValues: {
-      name: '',
-      email: '',
-      phone: '',
-      message: '',
-    },
-  });
-
-  const onSubmit = async (data: ContactFormValues) => {
-    setIsSubmitting(true);
-
-    try {
-      const response = await fetch('/api/contact', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(data),
-      });
-
-      const result = await response.json();
-
-      if (response.ok) {
-        toast.success('Message sent successfully!');
-        form.reset();
-      } else {
-        toast.error(
-          result.error || 'Failed to send message. Please try again.',
-        );
-      }
-    } catch (error) {
-      console.error('Error submitting form:', error);
-      toast.error('Something went wrong. Please try again later.');
-    } finally {
-      setIsSubmitting(false);
-    }
-  };
+export default function ContactPage() {
+  const email = "vaibhavkesarwani100@email.com";
 
   return (
-    <Card className="border-none bg-transparent shadow-none">
-      <CardHeader>
-        <CardTitle>Send me a message</CardTitle>
-        <CardDescription>
-          Fill out the form below and I will get back to you as soon as
-          possible.
-        </CardDescription>
-      </CardHeader>
-      <CardContent>
-        <Form {...form}>
-          <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
-            <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
-              <FormField
-                control={form.control}
-                name="name"
-                render={({ field }) => (
-                  <FormItem>
-                    <FormLabel>Name *</FormLabel>
-                    <FormControl>
-                      <Input placeholder="Your full name" {...field} />
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
-              <FormField
-                control={form.control}
-                name="phone"
-                render={({ field }) => (
-                  <FormItem>
-                    <FormLabel>Phone *</FormLabel>
-                    <FormControl>
-                      <Input placeholder="+1 (123) xxx-xxxx" {...field} />
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
-            </div>
+    <main className="px-4 sm:px-6 py-8 sm:py-10">
+      <div className="mb-12 sm:mb-14 flex justify-center">
+        <div
+          className="
+            w-full max-w-2xl
+            rounded-2xl sm:rounded-3xl
+            border border-black/10 dark:border-white/10
+            bg-white/40 dark:bg-white/2
+            backdrop-blur-2xl
+            shadow-xl
+            p-5 sm:p-8 md:p-10
+            space-y-4 sm:space-y-5
+          "
+        >
+          <div className="text-xs sm:text-sm font-bold uppercase tracking-wide">
+            Contact Information
+          </div>
 
-            <FormField
-              control={form.control}
-              name="email"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>Email *</FormLabel>
-                  <FormControl>
-                    <Input
-                      placeholder="your.email@example.com"
-                      type="email"
-                      {...field}
-                    />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
+          {contactConfig.socialData.map((data, i) => {
+            const Icon = data.icon;
 
-            <FormField
-              control={form.control}
-              name="message"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>Message *</FormLabel>
-                  <FormControl>
-                    <Textarea
-                      placeholder="Tell me about your project or just say hello..."
-                      className="min-h-30 resize-none"
-                      {...field}
-                    />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
+            return (
+              <Link
+                key={i}
+                href={`mailto:${email}`}
+                className="
+              group block
+              rounded-xl sm:rounded-2xl
+              border border-black/10 dark:border-white/5
+              bg-white/60 dark:bg-white/5
+              backdrop-blur-xl
+              p-4 sm:p-5
+              transition-all duration-300 sm:duration-500
+              active:scale-[0.98]
+              sm:hover:scale-[1.015]
+              hover:border-black/30 dark:hover:border-white/30
+              hover:shadow-lg
+            "
+              >
+                <div className="flex items-center gap-4 sm:gap-5">
+                  <div
+                    className="
+                  p-2.5 sm:p-3
+                  rounded-lg sm:rounded-xl
+                  border border-black/10 dark:border-white/10
+                  bg-blue-300 dark:bg-yellow-300 dark:text-black
+                  transition-all duration-300
+                  sm:group-hover:scale-110
+                "
+                  >
+                    <Icon size={18} className="sm:stroke-[2.5]" />
+                  </div>
 
-            <Button type="submit" className="w-fit" disabled={isSubmitting}>
-              {isSubmitting ? (
-                <>
-                  <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                  Sending your message...
-                </>
-              ) : (
-                <>
-                  <Chat className="mr-2 h-4 w-4" />
-                  Send Message
-                </>
-              )}
-            </Button>
-          </form>
-        </Form>
-      </CardContent>
-    </Card>
+                  <div className="min-w-0">
+                    <p className="text-[10px] sm:text-xs uppercase tracking-wider text-neutral-500">
+                      {data.name}
+                    </p>
+                    <p className="text-sm sm:text-lg md:text-xl font-semibold break-all">
+                      {data.text}
+                    </p>
+                  </div>
+                </div>
+              </Link>
+            );
+          })}
+        </div>
+      </div>
+
+      <div className="space-y-8 sm:space-y-10">
+        <h2 className="text-center text-lg sm:text-xl font-medium tracking-wide">
+          Find Me On
+        </h2>
+
+        <div
+          className="
+            grid
+            grid-cols-2
+            lg:grid-cols-4
+            gap-4 sm:gap-6 lg:gap-8
+          "
+        >
+          {contactConfig.socialLinks.map((social, i) => {
+            const Icon = social.icon;
+
+            return (
+              <Link
+                key={social.name}
+                href={social.href}
+                target="_blank"
+                className="
+                  group relative
+                  rounded-2xl sm:rounded-3xl
+                  border border-black/10 dark:border-white/10
+                  backdrop-blur-xl
+                  p-5 sm:p-7 lg:p-8
+                  transition-all duration-300 sm:duration-500
+                  active:scale-[0.97]
+                  sm:hover:-translate-y-2
+                  hover:border-black/30 dark:hover:border-white/30
+                "
+                style={{
+                  animationDelay: `${i * 80}ms`,
+                }}
+              >
+                <div className="flex flex-col items-center text-center gap-4 sm:gap-5">
+                  <div
+                    className="
+                      p-4
+                      rounded-2xl
+                      border border-black/10 dark:border-white/10
+                      bg-blue-300 dark:bg-yellow-300 text-black
+                      transition duration-500
+                      sm:group-hover:scale-110
+                    "
+                  >
+                    <Icon size={22} className="sm:size-6.5" />
+                  </div>
+
+                  <p className="text-xs sm:text-sm font-semibold tracking-wide opacity-80 group-hover:opacity-100 transition">
+                    {social.name}
+                  </p>
+                </div>
+              </Link>
+            );
+          })}
+        </div>
+      </div>
+    </main>
   );
 }
