@@ -73,7 +73,7 @@ import path from "path";
 
   fs.writeFileSync(outputFile, finalContent);
 
-  console.log("✅ Registry generated (examples + components)!");
+  console.log("✅ Registry generated!");
 }
 
 generate();
