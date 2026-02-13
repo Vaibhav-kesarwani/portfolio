@@ -25,7 +25,7 @@ export const navbarConfig = {
     },
     {
       label: "Labs",
-      href: "/docs/guides",
+      href: "/docs/components",
     },
   ] as NavItem[],
 };
