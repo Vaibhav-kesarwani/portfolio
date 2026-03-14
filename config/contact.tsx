@@ -33,22 +33,22 @@ export const contactConfig = {
     {
       name: "Instagram",
       icon: Instagram,
-      href: "https://instagram.com/yourusername",
+      href: "https://instagram.com/vaibhavkesarwani__",
     },
     {
       name: "Twitter",
       icon: Twitter,
-      href: "https://twitter.com/yourusername",
+      href: "https://twitter.com/Vaibhav_k__",
     },
     {
       name: "LinkedIn",
       icon: Linkedin,
-      href: "https://linkedin.com/in/yourusername",
+      href: "https://www.linkedin.com/in/vaibhavdev",
     },
     {
       name: "YouTube",
       icon: Youtube,
-      href: "https://youtube.com/@yourchannel",
+      href: "https://youtube.com/@soon",
     },
   ],
 };
