@@ -29,7 +29,7 @@ export const Contributor = () => {
                 <div className="relative h-6 w-6 overflow-hidden rounded-full border border-border">
                   <Image
                     alt={`${creator.name}'s avatar`}
-                    className="object-cover bg-blue-300 dark:bg-yellow-300"
+                    className="object-cover"
                     height={24}
                     src={creator.avatar}
                     width={24}

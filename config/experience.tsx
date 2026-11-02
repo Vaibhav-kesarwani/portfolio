@@ -1,4 +1,11 @@
+import ClaudeIcon from "@/components/technologies/Claude";
+import ClaudeCodeIcon from "@/components/technologies/ClaudeCode";
+import CopilotIcon from "@/components/technologies/Copilot";
+import CrewAIIcon from "@/components/technologies/Crewai";
 import Figma from "@/components/technologies/Figma";
+import LangChainIcon from "@/components/technologies/LangChain";
+import LangGraphIcon from "@/components/technologies/LangGraph";
+import MCPIcon from "@/components/technologies/Mcp";
 import NextJs from "@/components/technologies/NextJs";
 import Postman from "@/components/technologies/Postman";
 import ReactIcon from "@/components/technologies/ReactIcon";
@@ -30,6 +37,60 @@ export interface Experience {
 }
 
 export const experiences: Experience[] = [
+  {
+    isCurrent: true,
+    isBlur: false,
+    company: "Agile Ventures",
+    position: "AI/ML Engineer",
+    location: "Grugram",
+    image: "/company/agile.jpeg",
+    description: [
+      "Developing and deploying Generative AI solutions using LLMs and modern AI frameworks.",
+      "Building AI-powered applications using LLMs, RAG pipelines, and vector databases.",
+      "Working on AI agents and workflow automation to streamline business processes.",
+      "Optimizing AI solutions for performance, accuracy, and real-world use cases.",
+    ],
+    startDate: "May 2024",
+    endDate: "",
+    technologies: [
+      {
+        name: "LangChain",
+        href: "https://www.langchain.com/",
+        icon: <LangChainIcon />,
+      },
+      {
+        name: "LangGraph",
+        href: "https://www.langchain.com/langgraph",
+        icon: <LangGraphIcon />,
+      },
+      {
+        name: "Claude Code",
+        href: "https://www.claude.com/product/claude-code",
+        icon: <ClaudeCodeIcon />,
+      },
+      {
+        name: "Claude",
+        href: "https://claude.ai/",
+        icon: <ClaudeIcon />,
+      },
+      {
+        name: "Microsoft Copilot Studio",
+        href: "https://www.microsoft.com/en-us/microsoft-copilot/microsoft-copilot-studio",
+        icon: <CopilotIcon />,
+      },
+      {
+        name: "MCP",
+        href: "https://modelcontextprotocol.io/",
+        icon: <MCPIcon />,
+      },
+      {
+        name: "Crew AI",
+        href: "https://www.crewai.com/",
+        icon: <CrewAIIcon />,
+      },
+    ],
+    website: "https://agileventures.net/",
+  },
   {
     isCurrent: false,
     isBlur: false,

@@ -23,9 +23,9 @@ export const navbarConfig = {
       label: "Blog",
       href: "/blog",
     },
-    {
-      label: "Labs",
-      href: "/docs/components",
-    },
+    // {
+    //   label: "Labs",
+    //   href: "/docs/components",
+    // },
   ] as NavItem[],
 };
