@@ -10,9 +10,6 @@
 !.yarn/releases
 !.yarn/versions
 
-# generated content
-.source
-
 # testing
 /coverage
 

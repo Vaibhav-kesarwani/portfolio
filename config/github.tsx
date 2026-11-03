@@ -7,7 +7,7 @@
 
 export const githubConfig = {
   username: 'Vaibhav-kesarwani',
-  apiUrl: 'https://github-contributions-api.deno.dev',
+  apiUrl: 'https://github-contributions-api.jogruber.de/v4',
 
   // Display settings
   title: 'GitHub Activity',

@@ -19,7 +19,6 @@ This project showcases my work, skills, and projects in Full Stack Development, 
 - AI + Full Stack project showcase
 - Resume download support
 - Contact form / social links integration
-- Lab's UI
 
 ## Tech Stack
 
@@ -67,7 +66,6 @@ Open -> `http://localhost:3000`
 - Blogs
 - Projects
 - Contact
-- Lab's UI
 
 ## Goals of This Portfolio
 
@@ -79,11 +77,7 @@ Open -> `http://localhost:3000`
 
 ## Contributing
 
-Contributions make this project better and help build an amazing open-source community.
-
-If you'd like to contribute, please check out our [Contribution Guide](https://github.com/Vaibhav-kesarwani/portfolio/blob/main/CONTRIBUTING.md) to get started with setup instructions, guidelines, and best practices.
-
-We welcome your ideas, bug fixes, and new features!
+Contributions make this project better and help build an amazing open-source community. Feel free to open an issue or submit a pull request with your ideas, bug fixes, and new features.
 
 ## License
 
